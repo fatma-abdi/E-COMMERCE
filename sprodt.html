@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Details</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50">
+
+<!-- NAV -->
+<header class="bg-white shadow px-6 md:px-20 py-4 flex justify-between items-center">
+  <h1 class="text-2xl font-bold text-blue-600">ShopZone</h1>
+  <a href="index.html" class="text-gray-600 hover:text-blue-600">← Back</a>
+</header>
+
+<!-- PRODUCT -->
+<section class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 py-10 px-6">
+
+  <!-- IMAGE -->
+  <div class="space-y-4">
+
+    <img id="mainImg"
+      src="https://images.unsplash.com/photo-1523275335684-37898b6baf30"
+      class="w-full rounded-xl shadow">
+
+    <!-- thumbnails -->
+    <div class="flex gap-3">
+      <img onclick="changeImg(this)" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" class="w-20 h-20 object-cover rounded cursor-pointer border">
+      <img onclick="changeImg(this)" src="https://images.unsplash.com/photo-1513708927688-890fe0a2c3b7" class="w-20 h-20 object-cover rounded cursor-pointer border">
+      <img onclick="changeImg(this)" src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f" class="w-20 h-20 object-cover rounded cursor-pointer border">
+    </div>
+
+  </div>
+
+  <!-- DETAILS -->
+  <div class="space-y-4">
+
+    <h1 class="text-3xl font-bold">Smart Watch Pro</h1>
+
+    <!-- rating -->
+    <div class="text-yellow-500">
+      ⭐⭐⭐⭐☆ <span class="text-gray-600">(120 reviews)</span>
+    </div>
+
+    <p class="text-gray-600">
+      Smart watch with fitness tracking, notifications, waterproof design and long battery life.
+    </p>
+
+    <p class="text-2xl font-bold text-blue-600">$79.00</p>
+
+    <!-- quantity -->
+    <div class="flex items-center gap-4">
+      <button onclick="decrease()" class="px-3 py-1 bg-gray-200">-</button>
+      <span id="qty">1</span>
+      <button onclick="increase()" class="px-3 py-1 bg-gray-200">+</button>
+    </div>
+
+    <!-- buttons -->
+    <div class="flex gap-3">
+
+      <button onclick="addToCart()"
+        class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+        Add to Cart
+      </button>
+
+      <button class="border px-6 py-3 rounded-lg hover:bg-gray-100">
+        ❤️ Wishlist
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- TABS -->
+<section class="max-w-6xl mx-auto px-6 pb-10">
+
+  <div class="bg-white p-6 rounded-xl shadow">
+
+    <div class="flex gap-6 border-b pb-3">
+      <button onclick="showTab('desc')" class="font-semibold">Description</button>
+      <button onclick="showTab('spec')" class="font-semibold">Specs</button>
+      <button onclick="showTab('rev')" class="font-semibold">Reviews</button>
+    </div>
+
+    <div id="desc" class="mt-4">
+      Full description of the product goes here...
+    </div>
+
+    <div id="spec" class="mt-4 hidden">
+      <ul class="list-disc ml-6">
+        <li>Waterproof</li>
+        <li>Bluetooth</li>
+        <li>7-day battery</li>
+      </ul>
+    </div>
+
+    <div id="rev" class="mt-4 hidden">
+      ⭐ John: Very good product! <br>
+      ⭐ Ali: I like it!
+    </div>
+
+  </div>
+
+</section>
+
+<!-- JS -->
+<script>
+let qty = 1;
+
+function increase(){
+  qty++;
+  document.getElementById("qty").innerText = qty;
+}
+
+function decrease(){
+  if(qty > 1) qty--;
+  document.getElementById("qty").innerText = qty;
+}
+
+function changeImg(el){
+  document.getElementById("mainImg").src = el.src;
+}
+
+function showTab(tab){
+  document.getElementById("desc").classList.add("hidden");
+  document.getElementById("spec").classList.add("hidden");
+  document.getElementById("rev").classList.add("hidden");
+
+  document.getElementById(tab).classList.remove("hidden");
+}
+
+function addToCart(){
+  alert("Added to cart (qty: " + qty + ")");
+}
+</script>
+
+</body>
+</html>
